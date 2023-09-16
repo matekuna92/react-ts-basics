@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-		<Todos items={TodoList}/>
+		<Todos items={TodoList} />
     </div>
   );
 }
