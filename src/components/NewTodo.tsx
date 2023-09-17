@@ -1,10 +1,10 @@
 import { useRef } from "react";
 
-import styles from './NewTodo.module.css';
+import styles from "./NewTodo.module.css";
 
 // function type definition for expection function typed props, which expects a string argument
-const NewTodo: React.FC<{onAddTodo: (text: string) => void}> = (props) => {
-    // in TS useRef also requires a type definition what type of element is should expect. 
+const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+    // in TS useRef also requires a type definition what type of element is should expect.
     // useRef is a generic type, so it could be connected with any kind of input elements without TS
     // requires a default value (null)
     const inputRef = useRef<HTMLInputElement>(null);
@@ -18,19 +18,20 @@ const NewTodo: React.FC<{onAddTodo: (text: string) => void}> = (props) => {
         // current! - ! can be defined if it's sure that value is not null at this point of code
         const enteredText = inputRef.current!.value;
 
-        if(enteredText.trim().length === 0) {
+        if (enteredText.trim().length === 0) {
             return;
         }
 
         props.onAddTodo(enteredText);
-    }
+    };
 
-    return <form onSubmit={submitHandler} className={styles.form}>
+    return (
+        <form onSubmit={submitHandler} className={styles.form}>
             <label>Todo Text</label>
             <input type="text" ref={inputRef}></input>
             <button>Add Todo</button>
-            <button>Delete Todo</button>
         </form>
-    }
+    );
+};
 
 export default NewTodo;
