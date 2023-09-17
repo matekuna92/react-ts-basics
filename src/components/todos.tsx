@@ -1,5 +1,6 @@
 import React from "react";
 import Todo from "../models/Todo";
+import TodoItem from "./Todoitem";
 
 // children is always a special prop without knowing its type at all
 // for every component we would have to always add children and the customs props as well
@@ -16,9 +17,10 @@ const Todos: React.FC<{ items: Todo[] }> = (props) => {
     return (
         <ul>
             {props.items.map((item) => (
-                <li key={item.id}>{item.text}</li>
-            ))}
-        </ul>
+                // can set key even if its not expected in the TodoItem component.
+                // *since React.FC type was defined, key, children, etc. special props can be assecced because of this
+                <TodoItem key={item.id} text={item.text} />}
+        </ul>   
     );
 };
 

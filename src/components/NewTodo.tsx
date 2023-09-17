@@ -27,6 +27,7 @@ const NewTodo: React.FC<{onAddTodo: (text: string) => void}> = (props) => {
             <label>Todo Text</label>
             <input type="text" ref={inputRef}></input>
             <button>Add Todo</button>
+            <button>Delete Todo</button>
         </form>
     }
 
