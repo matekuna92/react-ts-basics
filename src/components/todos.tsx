@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Todo from "../models/Todo";
 import TodoItem from "./Todoitem";
 import { TodosContext } from "../store/todos-context";
 
@@ -17,7 +16,7 @@ import styles from './Todos.module.css';
 
 // defining Todos as FC, and defining our own props in <>
 // pass forward the removeTodoHandler function, so it's defined in the App.tsx just as addTodoHandler
-const Todos: React.FC<{ items: Todo[]; onRemoveTodo: (id: string) => void }> = (props) => {
+const Todos: React.FC = () => {
     const todosCtx = useContext(TodosContext);
 
     return (

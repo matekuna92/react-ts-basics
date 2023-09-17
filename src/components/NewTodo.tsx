@@ -1,13 +1,16 @@
-import { useRef } from "react";
+import React, { useRef, useContext } from "react";
+import { TodosContext } from "../store/todos-context";
 
 import styles from "./NewTodo.module.css";
 
 // function type definition for expection function typed props, which expects a string argument
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+const NewTodo: React.FC = () => {
     // in TS useRef also requires a type definition what type of element is should expect.
     // useRef is a generic type, so it could be connected with any kind of input elements without TS
     // requires a default value (null)
     const inputRef = useRef<HTMLInputElement>(null);
+
+    const todosCtx = useContext(TodosContext);
 
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
@@ -22,7 +25,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
             return;
         }
 
-        props.onAddTodo(enteredText);
+        todosCtx.addTodo(enteredText);
     };
 
     return (
