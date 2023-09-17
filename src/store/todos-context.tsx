@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import Todo from "../models/Todo";
 
-const TodosContext = React.createContext<{ items: Todo[]; addTodo: () => void; removeTodo: (id: string) => void }>({
+// type alias
+type TodosCtxFormat = {
+    items: Todo[],
+    addTodo: (text: string) => void,
+    removeTodo: (id: string) => void
+};
+
+//const TodosContext = React.createContext<{ items: Todo[]; addTodo: () => void; removeTodo: (id: string) => void }>({
+export const TodosContext = React.createContext<TodosCtxFormat>({
     items: [],
     addTodo: () => {},
     removeTodo: (id: string) => {}
@@ -24,7 +32,7 @@ const TodosContextProvider: React.FC = (props) => {
         });
     };
 
-    const contextValue = {
+    const contextValue: TodosCtxFormat = {
         items: todoList,
         addTodo: addTodoHandler,
         removeTodo: removeTodoHandler
@@ -35,4 +43,4 @@ const TodosContextProvider: React.FC = (props) => {
     </TodosContext.Provider>
 }
 
-export default TodosContext;
+export default TodosContextProvider;
