@@ -2,6 +2,8 @@ import React from "react";
 import Todo from "../models/Todo";
 import TodoItem from "./Todoitem";
 
+import styles from './Todos.module.css';
+
 // children is always a special prop without knowing its type at all
 // for every component we would have to always add children and the customs props as well
 // convert function to Functional Component (FC),
@@ -15,11 +17,12 @@ import TodoItem from "./Todoitem";
 // defining Todos as FC, and defining our own props in <>
 const Todos: React.FC<{ items: Todo[] }> = (props) => {
     return (
-        <ul>
+        <ul className={styles.todos}>
             {props.items.map((item) => (
                 // can set key even if its not expected in the TodoItem component.
                 // *since React.FC type was defined, key, children, etc. special props can be assecced because of this
-                <TodoItem key={item.id} text={item.text} />}
+                <TodoItem key={item.id} text={item.text} />
+            ))}
         </ul>   
     );
 };

@@ -1,5 +1,7 @@
 import { useRef } from "react";
 
+import styles from './NewTodo.module.css';
+
 // function type definition for expection function typed props, which expects a string argument
 const NewTodo: React.FC<{onAddTodo: (text: string) => void}> = (props) => {
     // in TS useRef also requires a type definition what type of element is should expect. 
@@ -23,7 +25,7 @@ const NewTodo: React.FC<{onAddTodo: (text: string) => void}> = (props) => {
         props.onAddTodo(enteredText);
     }
 
-    return <form onSubmit={submitHandler}>
+    return <form onSubmit={submitHandler} className={styles.form}>
             <label>Todo Text</label>
             <input type="text" ref={inputRef}></input>
             <button>Add Todo</button>
